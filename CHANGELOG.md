@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.0.4](https://github.com/tombaileywzd/moviepy/tree/v1.0.4) (2020-12-15)
+
+[Full Changelog](https://github.com/tombaileywzd/moviepy/compare/v1.0.3...v1.0.4)
+
+Fix OSError when overflowing audio buffer: `OSError: Error in file ... , Accessing time t=... seconds, with clip duration=... seconds,` [\#1297](https://github.com/Zulko/moviepy/pull/1297)
+
+
 ## [v1.0.3](https://github.com/zulko/moviepy/tree/v1.0.3) (2020-05-07)
 
 [Full Changelog](https://github.com/zulko/moviepy/compare/v1.0.2...v1.0.3)
