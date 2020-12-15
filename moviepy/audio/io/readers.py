@@ -167,10 +167,14 @@ class FFMPEG_AudioReader:
 
         # Check that the requested time is in the valid range
             if not in_time.any():
-                raise IOError("Error in file %s, "%(self.filename)+
-                       "Accessing time t=%.02f-%.02f seconds, "%(tt[0], tt[-1])+
-                       "with clip duration=%d seconds, "%self.duration)
-
+                # TODO: only warn for the first frame out of range
+                warnings.warn(
+                    "Error in file %s, " % (self.filename) +
+                    "Accessing time t=%.02f-%.02f seconds, " % (tt[0], tt[-1]) +
+                    "with clip duration=%.02f seconds, " % self.duration,
+                    UserWarning,
+                )
+                return np.zeros((len(tt), self.nchannels))
             # The np.round in the next line is super-important.
             # Removing it results in artifacts in the noise.
             frames = np.round((self.fps*tt)).astype(int)[in_time]
